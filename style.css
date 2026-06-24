@@ -1,6 +1,6 @@
-/* =============================
+
    RESET & BASE
-   ============================= */
+   
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -38,9 +38,9 @@ body {
   min-height: 100vh;
 }
 
-/* =============================
-   TOPBAR
-   ============================= */
+
+ /* TOPBAR */
+
 .topbar {
   background: var(--white);
   border-bottom: 1px solid var(--gray-200);
@@ -102,9 +102,9 @@ body {
 
 .top-nav a:hover { color: var(--blue); }
 
-/* =============================
-   EDITOR SECTION
-   ============================= */
+
+   /* EDITOR SECTION */
+
 .editor-section {
   max-width: 1200px;
   margin: 28px auto;
@@ -155,9 +155,9 @@ body {
   padding-right: 4px;
 }
 
-/* =============================
-   TOOLBARS
-   ============================= */
+
+   /* TOOLBARS */
+
 .toolbar {
   background: var(--white);
   border: 1px solid var(--gray-200);
@@ -285,9 +285,9 @@ body {
   background: var(--blue-dark) !important;
 }
 
-/* =============================
-   EDITOR PANES
-   ============================= */
+
+   /* EDITOR PANES */
+   
 .editor-wrapper {
   position: relative;
   border: 1px solid var(--gray-200);
@@ -385,9 +385,9 @@ body {
 
 .html-editor::placeholder { color: #334155; }
 
-/* =============================
-   FLOATING TABLE TOOLBAR
-   ============================= */
+
+   /* FLOATING TABLE TOOLBAR */
+
 .table-toolbar {
   position: absolute;
   display: flex;
@@ -442,9 +442,9 @@ body {
   outline-offset: 2px;
 }
 
-/* =============================
-   BOTTOM ACTIONS
-   ============================= */
+
+   /* BOTTOM ACTIONS */
+
 .editor-actions {
   display: flex;
   flex-wrap: wrap;
@@ -488,9 +488,9 @@ body {
 }
 .action-pill.ghost:hover { border-color: var(--gray-400); color: var(--gray-900); }
 
-/* =============================
-   INFO / FEATURE SECTIONS
-   ============================= */
+
+   /* INFO / FEATURE SECTIONS */
+
 .info-section {
   background: var(--white);
   border-top: 1px solid var(--gray-200);
@@ -660,9 +660,9 @@ body {
   margin: 0;
 }
 
-/* =============================
-   FOOTER
-   ============================= */
+
+   /* FOOTER */
+
 .site-footer {
   background: var(--gray-900);
   color: var(--gray-400);
@@ -671,9 +671,9 @@ body {
   font-size: 13px;
 }
 
-/* =============================
-   TOAST
-   ============================= */
+
+   /* TOAST */
+
 .toast {
   position: fixed;
   bottom: 28px;
@@ -697,14 +697,14 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* =============================
-   UTILITY
-   ============================= */
+
+   /* UTILITY */
+  
 .hidden { display: none !important; }
 
-/* =============================
-   RESPONSIVE
-   ============================= */
+
+   /* RESPONSIVE */
+ 
 @media (max-width: 680px) {
   .topbar-inner { padding: 0 14px; }
   .logo-tagline { display: none; }

@@ -1,11 +1,8 @@
-/* ===================================================
-   WordHTML Clone — app.js
-   Full rich-text editor + HTML source view + cleaner
-   =================================================== */
+
 
 'use strict';
 
-// ─── DOM refs ───────────────────────────────────────
+// DOM refs 
 const wordEditor  = document.getElementById('wordEditor');
 const htmlEditor  = document.getElementById('htmlEditor');
 const wordPane    = document.getElementById('wordPane');
@@ -16,10 +13,10 @@ const wordToolbar = document.getElementById('wordToolbar');
 const htmlToolbar = document.getElementById('htmlToolbar');
 const charCount   = document.getElementById('charCount');
 
-// ─── State ──────────────────────────────────────────
+// State 
 let activeTab = 'word'; // 'word' | 'html'
 
-// ─── Tab switching ──────────────────────────────────
+// Tab switching
 function switchTab(tab) {
   if (tab === activeTab) return;
   activeTab = tab;
@@ -47,14 +44,14 @@ function switchTab(tab) {
   updateCharCount();
 }
 
-// ─── execCommand wrapper ────────────────────────────
+// execCommand wrapper
 function execCmd(cmd, value = null) {
   wordEditor.focus();
   document.execCommand(cmd, false, value);
   updateCharCount();
 }
 
-// ─── Character count ────────────────────────────────
+// Character count 
 function updateCharCount() {
   const text = wordEditor.innerText || '';
   charCount.textContent = `characters: ${text.length}`;
@@ -63,13 +60,13 @@ function updateCharCount() {
 wordEditor.addEventListener('input', updateCharCount);
 htmlEditor.addEventListener('input', updateCharCount);
 
-// ─── Insert Link ────────────────────────────────────
+// Insert Link 
 function insertLink() {
   const url = prompt('Enter URL:', 'https://');
   if (url) execCmd('createLink', url);
 }
 
-// ─── Insert Table ───────────────────────────────────
+// Insert Table
 function insertTable() {
   const rows = parseInt(prompt('Number of rows:', '3'), 10) || 3;
   const cols = parseInt(prompt('Number of columns:', '3'), 10) || 3;
@@ -89,7 +86,7 @@ function insertTable() {
   updateCharCount();
 }
 
-// ─── TABLE EDITING TOOLS ─────────────────────────────
+//  TABLE EDITING TOOLS 
 const tableToolbar = document.getElementById('tableToolbar');
 let activeCell  = null; // <td> or <th> the cursor is currently in
 let activeTable = null;
@@ -296,12 +293,12 @@ tableToolbar.addEventListener('click', (e) => {
   wordEditor.focus();
 });
 
-// ─── Insert HR ──────────────────────────────────────
+//  Insert HR 
 function insertHR() {
   execCmd('insertHTML', '<hr /><p></p>');
 }
 
-// ─── Clear editor ───────────────────────────────────
+//  Clear editor
 function clearEditor() {
   if (!wordEditor.innerHTML.trim() && !htmlEditor.value.trim()) return;
   if (!confirm('Clear all content?')) return;
@@ -311,7 +308,7 @@ function clearEditor() {
   toast('Editor cleared.');
 }
 
-// ─── Load sample content ────────────────────────────
+//  Load sample content 
 function loadSample() {
   const sample = `
 <h1>Welcome to WordHTML Editor</h1>
@@ -348,7 +345,7 @@ function loadSample() {
   toast('Sample content loaded!');
 }
 
-// ─── HTML CLEANING ──────────────────────────────────
+//  HTML CLEANING  
 function cleanHTML(type) {
   if (activeTab !== 'html') {
     switchTab('html');
@@ -431,7 +428,7 @@ function compressHTML() {
   toast('HTML compressed.');
 }
 
-// ─── Copy HTML ──────────────────────────────────────
+// Copy HTML 
 function copyHTML() {
   const text = activeTab === 'html' ? htmlEditor.value : prettifyHTML(wordEditor.innerHTML);
   navigator.clipboard.writeText(text).then(() => toast('HTML copied to clipboard!')).catch(() => {
@@ -441,7 +438,7 @@ function copyHTML() {
   });
 }
 
-// ─── Download HTML ──────────────────────────────────
+// Download HTML 
 function downloadHTML() {
   const body = activeTab === 'html' ? htmlEditor.value : prettifyHTML(wordEditor.innerHTML);
   const full = `<!DOCTYPE html>
@@ -468,13 +465,13 @@ ${body}
   downloadFile('document.html', full, 'text/html');
 }
 
-// ─── Download plain text ────────────────────────────
+//  Download plain text 
 function downloadText() {
   const text = wordEditor.innerText || '';
   downloadFile('document.txt', text, 'text/plain');
 }
 
-// ─── File download helper ───────────────────────────
+//  File download helper 
 function downloadFile(name, content, type) {
   const blob = new Blob([content], { type });
   const a = document.createElement('a');
@@ -485,7 +482,7 @@ function downloadFile(name, content, type) {
   toast(`Downloaded as ${name}`);
 }
 
-// ─── Prettify / indent HTML ─────────────────────────
+//  Prettify / indent HTML 
 function prettifyHTML(html) {
   if (!html || !html.trim()) return '';
 
@@ -540,7 +537,7 @@ function prettifyHTML(html) {
   return result.trim();
 }
 
-// ─── Toast notification ─────────────────────────────
+//  Toast notification 
 let toastEl = null;
 let toastTimer = null;
 
@@ -556,7 +553,7 @@ function toast(msg) {
   toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2400);
 }
 
-// ─── Keyboard shortcuts ─────────────────────────────
+//  Keyboard shortcuts 
 document.addEventListener('keydown', (e) => {
   // Tab key inside word editor → insert spaces
   if (e.key === 'Tab' && document.activeElement === wordEditor) {
@@ -565,11 +562,11 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ─── Paste clean text from clipboard (optional) ─────
+//  Paste clean text from clipboard (optional) 
 wordEditor.addEventListener('paste', (e) => {
   // Allow default paste (preserves rich formatting from Word/Docs)
   // We let the browser handle it natively so styles come through
 });
 
-// ─── Init ───────────────────────────────────────────
+//  Init
 updateCharCount();
