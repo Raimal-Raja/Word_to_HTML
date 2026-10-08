@@ -2,12 +2,11 @@
 
 Browser-based document-to-HTML interface implemented with HTML, CSS, and JavaScript.
 
-## Repository guide
+## Setup and repository reference
 
-### Contents
+### Project structure
 
 - [LICENSE](LICENSE)
-- [README.md](README.md)
 - [app.js](app.js)
 - [index.html](index.html)
 - [style.css](style.css)
@@ -27,9 +26,15 @@ python -m http.server 8000
 
 ### Configuration and limitations
 
+Paste rich text into the visual editor or edit HTML in the source tab. Formatting, table tools and export run in the browser. This is an editor, not a server-side DOCX conversion service.
+
 ### Validation
 
-Reviewed on 2026-10-08. JavaScript source files passed node --check. Browser interaction and production builds were not verified.
+Audit: 2026-10-08. Repository structure, setup instructions and description were reviewed. 1 JavaScript files passed node --check; JSX/TypeScript production builds were not run. Syntax checks do not establish full runtime correctness. External APIs, live scraping, GUI interaction, notebook training and production deployment were not comprehensively exercised.
+
+### Repository description
+
+The short GitHub description is provided in [REPOSITORY_DESCRIPTION.md](REPOSITORY_DESCRIPTION.md).
 
 ### Contributions
 
